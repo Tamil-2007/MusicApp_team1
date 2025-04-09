@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pritam Songs Collection</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #1DB954;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .song-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .song-item {
+            background-color: #282828;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .song-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #383838;
+        }
+        
+        .song-content {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .song-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1DB954;
+            margin-right: 20px;
+            min-width: 30px;
+        }
+        
+        .song-info {
+            flex-grow: 1;
+        }
+        
+        .song-title {
+            font-size: 1.2rem;
+            margin: 0 0 5px 0;
+        }
+        
+        .song-movie {
+            font-size: 0.9rem;
+            color: #b3b3b3;
+            margin: 0;
+        }
+        
+        .play-icon {
+            font-size: 1.5rem;
+            color: #1DB954;
+        }
+        
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pritam Collection </h1>
+    </header>
+    
+    <div class="container">
+        <ul class="song-list">
+            <li class="song-item" data-song-id="1">
+                <div class="song-content">
+                    <div class="song-number">1</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Why This Kolaveri Di</h3>
+                        <p class="song-movie">3 (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div>
+            </li>
+            
+            <li class="song-item" data-song-id="2">
+                <div class="song-content">
+                    <div class="song-number">2</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Chellamma</h3>
+                        <p class="song-movie">Doctor (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div>
+            </li>
+            
+            <li class="song-item" data-song-id="3">
+                <div class="song-content">
+                    <div class="song-number">3</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Hukum - Thalaivar Alappara</h3>
+                        <p class="song-movie">Jailer (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div>
+            </li>
+            
+            <li class="song-item" data-song-id="4">
+                <div class="song-content">
+                    <div class="song-number">4</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Private Party</h3>
+                        <p class="song-movie">Don (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div>
+            </li>
+            
+            <li class="song-item" data-song-id="5">
+                <div class="song-content">
+                    <div class="song-number">5</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Balle Lakka</h3>
+                        <p class="song-movie">Jawan (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <footer>
+        <p>© 2023 Anirudh Songs Collection. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // JavaScript for handling song clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const songItems = document.querySelectorAll('.song-item');
+            
+            songItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const songId = this.getAttribute('data-song-id');
+                    redirectToSongPage(songId);
+                });
+            });
+            
+            function redirectToSongPage(songId) {
+                // In a real application, you would redirect to different pages based on songId
+                // For this example, we'll redirect to a placeholder page
+                window.location.href = `song_page_${songId}.html`;
+                
+                // Note: In a real implementation, you would need to create:
+                // song_page_1.html, song_page_2.html, etc. for each song
+                // Or use a single page with dynamic content based on URL parameters
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search | MyMusic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            background-color: #b93f1d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #000;
+        }
+        .search-container {
+            padding: 30px;
+            text-align: center;
+        }
+        .search-box {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            background-color: #222;
+            color: #fff;
+        }
+        .search-box input:focus {
+            outline: none;
+            background-color: #333;
+        }
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .result-item {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 15px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .result-item:hover {
+            transform: scale(1.03);
+            background-color: #333;
+        }
+        .result-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .result-item h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .result-item p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MyMusic</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Browse.html">Browse</a></li>
+                <li><a href="Search.html">Search</a></li>
+                <li><a href="History.html">Your History</a></li>
+                <li><a href="favorite.html">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search for songs, artists, or albums...">
+        </div>
+        
+        <div id="search-results" class="search-results">
+            <!-- Results will be populated by JavaScript -->
+        </div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            No results found. Try a different search term.
+        </div>
+    </div>
+
+    <script>
+        // Sample music data
+        const musicData = [
+            { id: 1, title: "Kutty Story", artist: "Anirudh", type: "song", image: "C:\\Users\\tamiz\\Downloads\\kuttystory.jpeg" },
+            { id: 2, title: "Premalo", artist: "DSP", type: "song", image: "C:\\Users\\tamiz\\AppData\\Local\\Microsoft\\Windows\\INetCache\\IE\\MGZMHFAM\\IMG-20250321-WA0010[1].jpg" },
+            { id: 3, title: "KGF Theme", artist: "Ravi Basrur", type: "song", image: "C:\\Users\\tamiz\\Downloads\\kgf.jpeg" },
+            { id: 4, title: "Top Hits", artist: "Various", type: "playlist", image: "C:\\Users\\tamiz\\Downloads\\music.jpg" },
+            { id: 5, title: "Chill Vibes", artist: "Various", type: "playlist", image: "C:\\Users\\tamiz\\Downloads\\chillvibe.jpg" },
+            { id: 6, title: "Anirudh", type: "artist", image: "C:\\Users\\tamiz\\Downloads\\anirudh.webp" },
+            { id: 7, title: "AR Rahman", type: "artist", image: "C:\\Users\\tamiz\\Downloads\\arrahman.png" },
+            { id: 8, title: "Arima",artist: "AR Rahman", type: "song", image: "C:\Users\tamiz\Downloads\enthiran.jpeg" },
+            { id: 9, title: "Chennaicity",artist: "Anirudh", type: "song", image: "C:\Users\tamiz\Downloads\chennaicity.jpeg" },
+            { id: 10, title: "Pushpa Pushpa",artist: "DSP", type: "song", image: "c:\Users\tamiz\Downloads\pushpaa.jpeg" }
+
+            
+            
+
+        ];
+
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            if (searchTerm.length < 2) {
+                searchResults.innerHTML = '';
+                noResults.style.display = 'none';
+                return;
+            }
+            
+            const filteredResults = musicData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) || 
+                (item.artist && item.artist.toLowerCase().includes(searchTerm))
+            );
+            
+            displayResults(filteredResults);
+        });
+
+        function displayResults(results) {
+            searchResults.innerHTML = '';
+            
+            if (results.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            results.forEach(item => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
+                
+                let typeText = '';
+                if (item.type === 'song') typeText = 'Song';
+                else if (item.type === 'playlist') typeText = 'Playlist';
+                else if (item.type === 'artist') typeText = 'Artist';
+                
+                resultItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}">
+                    <h3>${item.title}</h3>
+                    ${item.artist ? `<p>${item.artist}</p>` : ''}
+                    <span class="type-badge">${typeText}</span>
+                `;
+                
+                resultItem.addEventListener('click', function() {
+                    // In a real app, this would navigate to the item's page
+                    alert(`Opening ${item.type}: ${item.title}`);
+                });
+                
+                searchResults.appendChild(resultItem);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill Vibes Collection</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #1DB954;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        
+        .song-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .song-item {
+            background-color: #282828;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .song-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background-color: #383838;
+        }
+        
+        .song-content {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        
+        .song-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1DB954;
+            margin-right: 20px;
+            min-width: 30px;
+        }
+        
+        .song-info {
+            flex-grow: 1;
+        }
+        
+        .song-title {
+            font-size: 1.2rem;
+            margin: 0 0 5px 0;
+        }
+        
+        .song-movie {
+            font-size: 0.9rem;
+            color: #b3b3b3;
+            margin: 0;
+        }
+        
+        .play-icon {
+            font-size: 1.5rem;
+            color: #1DB954;
+        }
+        
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .favorite-btn.active {
+            color: #b93f1d;
+        }
+        
+        .song-item {
+            position: relative;
+        }
+        header {
+            background-color: #b93f1d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chill Vibes Collection </h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Browse.html">Browse</a></li>
+                <li><a href="Search.html">Search</a></li>
+                <li><a href="History.html">Your History</a></li>
+                <li><a href="favorite.html">Favorites</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <ul class="song-list">
+            <li class="song-item" data-song-id="1">
+                <a href="C:\Users\tamiz\Downloads\Kutti Story.mp3"><div class="song-content">
+                    <div class="song-number">1</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Kutty Story</h3>
+                        <p class="song-movie">Master(Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div></a>
+            </li>
+            
+            <li class="song-item" data-song-id="2">
+                <a href="C:\Users\tamiz\Downloads\Aaluma Doluma.mp3"><div class="song-content">
+                    <div class="song-number">2</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Aaluma Doluma</h3>
+                        <p class="song-movie">Vedalam (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div></a>
+            </li>
+            
+            <li class="song-item" data-song-id="3">
+                <a href="C:\Users\tamiz\Downloads\Manasilaayo.mp3"><div class="song-content">
+                    <div class="song-number">3</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Manasilayo</h3>
+                        <p class="song-movie">Vettaiyan (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div></a>
+            </li>
+            
+            <li class="song-item" data-song-id="4">
+                <a href="C:\Users\tamiz\Downloads\Chennai City Gangsta.mp3"><div class="song-content">
+                    <div class="song-number">4</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Chennai City</h3>
+                        <p class="song-movie">Vanakkam Chennai (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div></a>
+            </li>
+            
+            <li class="song-item" data-song-id="5">
+                <a href="C:\Users\tamiz\Downloads\Fear Song.mp3"><div class="song-content">
+                    <div class="song-number">5</div>
+                    <div class="song-info">
+                        <h3 class="song-title">Fear Song</h3>
+                        <p class="song-movie">Devara (Movie)</p>
+                    </div>
+                    <div class="play-icon">▶</div>
+                </div></a>
+            </li>
+        </ul>
+    </div>
+    
+    <footer>
+        <p>© 2023 Chill Vibes Songs Collection. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // JavaScript for handling song clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const songItems = document.querySelectorAll('.song-item');
+            
+            songItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const songId = this.getAttribute('data-song-id');
+                    redirectToSongPage(songId);
+                });
+            });
+            
+            function redirectToSongPage(songId) {
+                // In a real application, you would redirect to different pages based on songId
+                // For this example, we'll redirect to a placeholder page
+                window.location.href = `song_page_${songId}.html`;
+                
+                // Note: In a real implementation, you would need to create:
+                // song_page_1.html, song_page_2.html, etc. for each song
+                // Or use a single page with dynamic content based on URL parameters
+            }
+        });
+    </script>
+    <script>
+        // Initialize favorites if not exists
+        if (!localStorage.getItem('favorites')) {
+            localStorage.setItem('favorites', JSON.stringify([]));
+        }
+
+        // Add favorite functionality to all song items
+        document.querySelectorAll('.song-item').forEach(item => {
+            const favoriteBtn = document.createElement('button');
+            favoriteBtn.className = 'favorite-btn';
+            favoriteBtn.innerHTML = '♡';
+            item.querySelector('.song-content').appendChild(favoriteBtn);
+            
+            const title = item.querySelector('.song-title').textContent;
+            const movie = item.querySelector('.song-movie').textContent;
+            
+            // Check if already favorited
+            const favorites = JSON.parse(localStorage.getItem('favorites'));
+            const isFavorite = favorites.some(fav => fav.title === title);
+            if (isFavorite) {
+                favoriteBtn.classList.add('active');
+                favoriteBtn.innerHTML = '♥';
+            }
+            
+            // Favorite button click handler
+            favoriteBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                let favorites = JSON.parse(localStorage.getItem('favorites'));
+                const index = favorites.findIndex(fav => fav.title === title);
+                
+                if (index === -1) {
+                    // Add to favorites
+                    favorites.push({
+                        title: title,
+                        movie: movie,
+                        type: 'song',
+                        artist: 'Anirudh Ravichander'
+                    });
+                    this.classList.add('active');
+                    this.innerHTML = '♥';
+                    alert(`${title} added to favorites!`);
+                } else {
+                    // Remove from favorites
+                    favorites.splice(index, 1);
+                    this.classList.remove('active');
+                    this.innerHTML = '♡';
+                    alert(`${title} removed from favorites!`);
+                }
+                
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+            });
+        });
+    </script>
+</body>
+</html>

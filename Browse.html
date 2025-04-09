@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music App</title>
+    <style>
+       
+    .playlist, .tamil-playlist {
+        position: relative;
+    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .favorite-btn.active {
+            color: #b93f1d;
+        }
+        header {
+            background-color: #b93f1d;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #000;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #b93f1d, #121212);
+        }
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .hero button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #fff;
+            color:  #b93f1d;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .hero button:hover {
+            background-color: #ddd;
+        }
+        .playlist-section {
+            padding: 30px;
+            
+        }
+        .playlist-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .playlists {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 80px;
+        }
+        .playlist {
+            background-color: #222;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            width:200px;
+            
+        }
+        .playlist:hover {
+            transform: scale(1.05);
+        }
+        .playlist img {
+            width: 100%;
+            border-radius: 20px;
+            height:250px
+            
+            
+        }
+        .playlist h4 {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .tamil-songs-section {
+            padding: 30px;
+        }
+        .tamil-songs-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .tamil-songs-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #b93f1d #222;
+        }
+        .tamil-songs-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .tamil-songs-container::-webkit-scrollbar-track {
+            background: #222;
+            border-radius: 10px;
+        }
+        .tamil-songs-container::-webkit-scrollbar-thumb {
+            background-color: #b93f1d;
+            border-radius: 10px;
+        }
+        .tamil-playlist {
+            background-color: #222;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            width: 200px;
+            flex-shrink: 0;
+        }
+        .tamil-playlist:hover {
+            transform: scale(1.05);
+        }
+        .tamil-playlist img {
+            width: 100%;
+            border-radius: 20px;
+            height: 250px;
+            object-fit: cover;
+        }
+        .tamil-playlist h4 {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>MyMusic</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Browse.html">Browse</a></li>
+                <li><a href="Search.html">Search</a></li>
+                <li><a href="History.html">Your History</a></li>
+                <li><a href="favorite.html">Favorites</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Discover Your Favorite Tunes</h2>
+        <p>Stream unlimited music and create your own playlists.</p>
+        <button>Get Started</button>
+    </section>
+
+    <section class="playlist-section">
+        <h3>Top Playlists</h3>
+        <div class="playlists">
+            <div class="playlist">
+                <a href="C:\Users\tamiz\OneDrive\Desktop\mohith\Top_Hits.html"><img src="C:\Users\tamiz\Downloads\music.jpg" alt="Playlist Cover"></a>
+                <h4>Top Hits</h4>
+            </div>
+            <div class="playlist">
+                <a href="C:\Users\tamiz\OneDrive\Desktop\mohith\Chill_Vibes.html"><img src="C:\Users\tamiz\Downloads\chillvibe.jpg" alt="Playlist Cover"></a>
+                <h4>Chill Vibes</h4>
+            </div>
+            <div class="playlist">
+                <a href="C:\Users\tamiz\OneDrive\Desktop\mohith\Workout_Beats.html"><img src="C:\Users\tamiz\Downloads\workout.jpeg" alt="Playlist Cover"></a>
+                <h4>Workout Beats</h4>
+            </div>
+            <div class="playlist">
+                <a href="C:\Users\tamiz\OneDrive\Desktop\mohith\Classical_Melodies.html"><img src="C:\Users\tamiz\Downloads\classic.jpg" alt="Playlist Cover"></a>
+                <h4>Classical/Melodies Songs</h4>
+            </div>
+            
+
+        </div>
+    </section>
+
+
+    <script>
+        // Make playlist items clickable
+        document.querySelectorAll('.playlist').forEach(playlist => {
+            playlist.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                alert(`Playing playlist: ${title}`);
+                // In a real app, this would navigate to the playlist page or start playback
+            });
+        });
+    </script>
+    <script>
+        // Initialize favorites if not exists
+        if (!localStorage.getItem('favorites')) {
+            localStorage.setItem('favorites', JSON.stringify([]));
+        }
+    
+        // Function to add favorite buttons to playlist items
+        function addFavoriteButtons(selector) {
+            document.querySelectorAll(selector).forEach(item => {
+                const favoriteBtn = document.createElement('button');
+                favoriteBtn.className = 'favorite-btn';
+                favoriteBtn.innerHTML = '♡';
+                item.appendChild(favoriteBtn);
+                
+                const title = item.querySelector('h4').textContent;
+                const image = item.querySelector('img').src;
+                const category = item.closest('.tamil-songs-section, .playlist-section').querySelector('h3').textContent;
+                
+                // Check if already favorited
+                const favorites = JSON.parse(localStorage.getItem('favorites'));
+                const isFavorite = favorites.some(fav => fav.title === title);
+                if (isFavorite) {
+                    favoriteBtn.classList.add('active');
+                    favoriteBtn.innerHTML = '♥';
+                }
+                
+                // Favorite button click handler
+                favoriteBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    let favorites = JSON.parse(localStorage.getItem('favorites'));
+                    const index = favorites.findIndex(fav => fav.title === title);
+                    
+                    if (index === -1) {
+                        // Add to favorites
+                        favorites.push({
+                            title: title,
+                            image: image,
+                            category: category,
+                            type: 'song'
+                        });
+                        this.classList.add('active');
+                        this.innerHTML = '♥';
+                        alert(`${title} added to favorites!`);
+                    } else {
+                        // Remove from favorites
+                        favorites.splice(index, 1);
+                        this.classList.remove('active');
+                        this.innerHTML = '♡';
+                        alert(`${title} removed from favorites!`);
+                    }
+                    
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                });
+                
+                // Playlist click handler
+                item.addEventListener('click', function(e) {
+                    if (!e.target.classList.contains('favorite-btn')) {
+                        const title = this.querySelector('h4').textContent;
+                        alert(`Playing: ${title}`);
+                    }
+                });
+            });
+        }
+    
+        // Add favorite buttons to all sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Regular playlists
+            addFavoriteButtons('.playlist');
+            
+            // Tamil and Telugu songs
+            addFavoriteButtons('.tamil-playlist');
+            
+            // Top Artists (don't add favorite buttons here)
+            document.querySelectorAll('.playlist-section h3').forEach(section => {
+                if (section.textContent === 'Top Artists') {
+                    section.closest('.playlist-section').querySelectorAll('.playlist')
+                        .forEach(item => {
+                            item.style.cursor = 'pointer';
+                            item.addEventListener('click', function() {
+                                const title = this.querySelector('h4').textContent;
+                                alert(`Viewing artist: ${title}`);
+                            });
+                        });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
